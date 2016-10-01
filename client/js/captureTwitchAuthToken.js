@@ -7,7 +7,7 @@ console.log(authToken);
 
 request.send({
   method: 'POST',
-  url: 'http://localhost:8000/api/captureAuth',
+  url: 'http://localhost:8000/api/captureTwitchAuth',
   data: {
     token: authToken,
   },

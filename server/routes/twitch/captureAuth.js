@@ -1,10 +1,10 @@
 var bot = require('node-twitchbot');
 
 module.exports = function(router) {
-  router.get('/redirectAuth', function (req, res) {
+  router.post('/captureAuth', function (req, res) {
     bot.run({
       username: 'aarohmankad',
-      oauth: 'oauth:m94g18p2rec7i2lboarwc2qwtprgzz',
+      oauth: 'oauth:'+ req.body.params.token,
       channel: 'aarohmankad',
     });
 
@@ -12,8 +12,7 @@ module.exports = function(router) {
       if (err) {
         console.log(err);
       }
-    
-      console.log(chatter);
+
       bot.msg("Usage: !juke [artist name] - [song name]");
     });
 

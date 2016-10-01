@@ -1,6 +1,6 @@
 var SpotifyWebApi = require('spotify-web-api-node');
 
-var fileStream = require("fs");
+var fs = require("fs");
 var contents = fs.readFileSync("song.json");
 var JSONContent = JSON.parse(contents);
 //need to split the obj string into two strings 'arist' and 'track'
@@ -18,6 +18,16 @@ spotifyApi.searchTracks('track:' + JSONContent.Song + 'artist:' + JSONContent.Ar
 	}, function(err) {
 		console.log('Something went wrong!', err);
 	});
+//searchTracks should return data, ie a track, hopefully in a spotify url
+
+spotifyApi.addTracksToPlayList('TWITCH_STREAMER', 'PLAYLIST_ID', ['SPOTIFY TRACK ID'])
+	.then(function(data) {
+		console.log('Added track to playlist');
+	}, function(err) {
+		console.log('Something went wrongg!', err);
+	});
+
+
 
 //searchTracks returns an object, you need to figure out what to do with it
 //that object should contain some type of code to a song, which can then

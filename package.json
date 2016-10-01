@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "node-twitchbot": "^1.1.2"
+  }
+}

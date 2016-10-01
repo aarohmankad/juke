@@ -15,16 +15,21 @@ module.exports = function(router) {
         console.log(err);
       }
 
-      console.log("Someone typed !juke help");
-      bot.msg("Usage: !juke [artist name] - [song name]");
+      bot.msg("Usage: !juke /queue [song name] - [artist name]");
     });
 
-    bot.listenFor('!juke help', function(err, chatter) {
+    bot.listen('!juke /queue', function(err, chatter) {
       if (err) {
         console.log(err);
       }
 
-      console.log("Someone typed !juke help");
+      var message = chatter.msg;
+      var songParts = message.substring(13).split(' - ');
+      var songTitle = songParts[0];
+      var songArtist = songParts[1];
+      
+      console.log("Someone wants to play " + songTitle + " by " + songArtist);
+      bot.msg("Queueing " + songTitle + " by " + songArtist);
     });
 
     res.send({

@@ -18,7 +18,7 @@ module.exports = function(router) {
       }
 
       console.log("Someone typed !juke help");
-      bot.msg("Usage: !juke [artist name] - [song name]");
+      bot.msg("Usage: !juke [song name] - [artist name]");
     });
 
     res.send({

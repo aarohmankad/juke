@@ -1,14 +1,12 @@
 var bot = require('node-twitchbot');
 
 module.exports = function(router) { 
-  router.post('/captureAuth', function (req, res) {
+  router.get('/captureAuthTest', function (req, res) {
     var params = {
       username: 'aarohmankad',
-      oauth: 'oauth:' + req.body.token,
+      oauth: 'oauth:ziwu1ngzsa5j7xncfazrfdsn7wq2iw',
       channel: 'aarohmankad'
     };
-
-    console.log(params);
 
     bot.run(params);
 
@@ -19,6 +17,14 @@ module.exports = function(router) {
 
       console.log("Someone typed !juke help");
       bot.msg("Usage: !juke [artist name] - [song name]");
+    });
+
+    bot.listenFor('!juke help', function(err, chatter) {
+      if (err) {
+        console.log(err);
+      }
+
+      console.log("Someone typed !juke help");
     });
 
     res.send({

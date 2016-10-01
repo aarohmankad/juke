@@ -3,9 +3,11 @@ var
   hash = window.location.hash.substr(1),
   authToken = hash.split('=')[1].split('&')[0];
 
+console.log(authToken);
+
 request.send({
   method: 'POST',
-  url: 'localhost:8000/api/captureAuth',
+  url: 'http://localhost:8000/api/captureAuth',
   data: {
     token: authToken,
   },

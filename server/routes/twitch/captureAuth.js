@@ -1,7 +1,7 @@
 var bot = require('node-twitchbot');
 
 module.exports = function(router) { 
-  router.post('/captureAuth', function (req, res) {
+  router.post('/captureTwitchAuth', function (req, res) {
     var params = {
       username: 'aarohmankad',
       oauth: 'oauth:' + req.body.token,

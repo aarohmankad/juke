@@ -10,10 +10,8 @@ module.exports = {
     console.log("intialized");
   },
   search: function(song, artist) {
-    console.log("Search called");
-    console.log("Title:", song);
-    console.log("Artist:", artist);
-    return spotify.searchTracks(song);
+    console.log('track:' + song + ' artist:' + artist);
+    return spotify.searchTracks('track:' + song + ' artist:' + artist);
   },
   getMe: function() {
     spotify.getMe()
@@ -45,7 +43,7 @@ module.exports = {
       });
   },
   addToPlaylist: function(uri) {
-      console.log(user_id, playlist_id, uri);
+      console.log(user_id, playlist_id, [uri]);
       spotify.addTracksToPlaylist(user_id, playlist_id, [uri])
         .then(function(data) {
           console.log('Added tracks to playlist!');

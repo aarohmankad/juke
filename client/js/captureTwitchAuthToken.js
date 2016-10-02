@@ -18,7 +18,3 @@ request.send({
 
   console.log(data);
 });
-
-// var redirect = window.setTimeout(function() {
-//   window.location = 'http://localhost:9000/';
-// }, 1000);

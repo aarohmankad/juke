@@ -7,13 +7,6 @@
 	<div class="container">
 		<div class="row">
 
-		<!--
-			<ul class="breadcrumb col-xs-8 col-xs-offset-2">
-				<li><a href="#">Juke</a></li>
-				<li class="active">Setup Twitch</li>
-			</ul>
-		-->
-
 			<div class="col-xs-12" style="height:50px;"></div>
 
 			<div class="col-xs-8 col-xs-offset-2">
@@ -30,7 +23,7 @@
 								<div class="panel panel-default">
 									<div class="panel-body">
 										<p class="text-center">Sign into the Spotify account that will be used while streaming.</p><br>
-										<a href="#" class="btn btn-success btn-lg btn-block">Link Spotify</a>
+										<a href="https://accounts.spotify.com/authorize?client_id=7a473c2e401a46e9a9a5f8e3511b3058&redirect_uri=http://localhost:9000/finished.html&scope=playlist-modify-public&response_type=token" class="btn btn-success btn-lg btn-block">Link Spotify</a>
 									</div>
 								</div>
 							</div>
@@ -40,5 +33,8 @@
 			</div>
 		</div>
 	</div>
+
+	<script src='js/request.js'></script>
+    <script src='js/captureTwitchAuthToken.js'></script>
 </body>
 </html>

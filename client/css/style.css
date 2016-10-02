@@ -1,0 +1,3 @@
+.panel:first-child {
+  transition: all .2s ease-in;
+}

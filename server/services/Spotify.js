@@ -22,7 +22,7 @@ module.exports = {
       });
   },
   getUserPlaylists: function() {
-    spotify.getUserPlaylists(user_id)
+    return spotify.getUserPlaylists(user_id)
       .then(function(data) {
         for (var i = 0; i < data.body.items.length; i++) {
           if (data.body.items[i].name == 'Jukebox') {
@@ -43,8 +43,10 @@ module.exports = {
       });
   },
   addToPlaylist: function(uri) {
-      console.log(user_id, playlist_id, [uri]);
-      spotify.addTracksToPlaylist(user_id, playlist_id, [uri])
+      this.getUserPlaylists()
+        .then(function() {
+          return spotify.addTracksToPlaylist(user_id, playlist_id, [uri]);
+        })
         .then(function(data) {
           console.log('Added tracks to playlist!');
         }, function(err) {

@@ -70,8 +70,8 @@
 
   document.getElementById('linkTwitch').addEventListener('click', function() {
     var
-      username = document.getElementById('inputUsername').value,
-      channel = document.getElementById('inputChannel').value;
+      username = document.getElementById('inputUsername').value.toLowerCase(),
+      channel = document.getElementById('inputChannel').value.toLowerCase();
 
     saveData(username, channel);
 

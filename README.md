@@ -25,5 +25,6 @@ After all the installations, run the server.js file in both the server and clien
 ```
 $ nodemon server.js
 ```
+After running the `nodemon` command in both folders, the browser will open the configuration page for you. Follow the commands to configure Juke for your stream.
 
-In a browser, connect to localhost:9000 to begin using the app.
+You must configure Juke before each stream and keep it running during your stream. Be sure to close the command line when your stream is finished or you want to stop Juke.

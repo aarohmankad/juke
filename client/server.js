@@ -1,5 +1,3 @@
-// This file creates a simple server for us to use
-// Not important to understand
 var
   express = require('express'),
   app = express();

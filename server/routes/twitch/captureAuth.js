@@ -3,10 +3,11 @@ var Spotify = require('./../../services/Spotify');
 
 module.exports = function(router) { 
   router.post('/captureTwitchAuth', function (req, res) {
+    console.log(req.body);
     var params = {
-      username: 'aarohmankad',
+      username: req.body.username,
       oauth: 'oauth:' + req.body.token,
-      channel: 'aarohmankad'
+      channel: req.body.channel,
     };
 
     bot.run(params);

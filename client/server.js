@@ -12,3 +12,4 @@ app.get('/', function (req, res) {
 
 app.listen(9000);
 console.log('Magic happens on port 9000');
+require('openurl').open('http://localhost:9000');

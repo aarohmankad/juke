@@ -1,4 +1,5 @@
 var bot = require('node-twitchbot');
+var Spotify = require('./../../services/Spotify');
 
 module.exports = function(router) { 
   router.post('/captureTwitchAuth', function (req, res) {
@@ -40,8 +41,7 @@ module.exports = function(router) {
       var songTitle = songParts[0].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
       var songArtist = songParts[1].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
       
-      console.log("Someone wants to play " + songTitle + " by " + songArtist);
-      bot.msg("[Juke says:] Added " + songTitle + " by " + songArtist + " to the playlist.");
+      Spotify.search(songTitle, songArtist);
     });
     
     res.send({

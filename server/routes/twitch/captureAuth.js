@@ -36,12 +36,15 @@ module.exports = function(router) {
         bot.msg("[Juke says:] Song requests must be formatted as follows: !juke /queue [song name] - [artist name]");
       }
 
+      console.log(chatter);
       var message = chatter.msg;
       var songParts = message.substring(13).split(' - ');
       var songTitle = songParts[0].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
       var songArtist = songParts[1].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      
-      Spotify.search(songTitle, songArtist);
+
+      console.log("Searching...");
+      var spotifyUri = Spotify.search(songTitle, songArtist);
+      Spotify.addToPlaylist(spotifyUri);
     });
     
     res.send({

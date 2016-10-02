@@ -6,22 +6,37 @@
 <body style="background-color: #201C2B;">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-xs-12" style="height:50px;"></div>
-
 			<div class="col-xs-8 col-xs-offset-2 text-center">
-				<div class="panel panel-primary">
+				<div class="panel panel-success">
 					<div class="panel-heading">
 						<h3 class="panel-title text-center">You're all set!</h3>
 					</div>
 					
 				</div>
-
-				<img src="img/jukelogo.png" class="img-responsive" style="margin: 0 auto;" height="140px"/>
+				<img src="img/jukelogo.png" class="img-responsive" style="margin: 0 auto; padding-bottom: 20px;" height="140px"/>
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-body text-left">
+							<h3><b>Getting Started With Juke</b></h3><br>
+							<h4>"Help" Command</h4>
+							<p>
+								You can be reminded of the formatting guidelines at anytime by using the help command:
+							</p>
+							<code>!juke help</code>
+							<hr>
+							<h3><b>Adding Songs to the Playlist</b></h3><br>
+							<h4>"Add" Command</h4>
+							<p>Songs are added to a playlist called "Jukebox" in the Spotify client. Music can be added to the playlist using the following syntax:
+							</p>
+							<code>!juke /add [Song Title] - [Song Artist]</code>
+							<hr>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
 	<script src='js/request.js'></script>
 	<script src='js/captureSpotifyAuthToken.js'></script>
 </body>

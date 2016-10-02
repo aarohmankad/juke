@@ -4,6 +4,8 @@ Twitch plays Spotify.
 
 Local use:
 
+**These instructions assume you have [Nodejs and npm](https://nodejs.org/en/) installed**
+
 Make the sure the necessary dependencies are installed.  In the server and client folders, there are package.json files that specify what is needed. Run:
 
 ```

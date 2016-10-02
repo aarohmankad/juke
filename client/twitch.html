@@ -68,6 +68,10 @@
 
 <script>
 
+  document.getElementById('inputUsername').addEventListener('keyup', function(event) {
+    document.getElementById('inputChannel').value = document.getElementById('inputUsername').value;
+  })
+
   document.getElementById('linkTwitch').addEventListener('click', function() {
     var
       username = document.getElementById('inputUsername').value.toLowerCase(),
@@ -76,7 +80,7 @@
     saveData(username, channel);
 
     window.location = "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=lu14if1tzfgirz3wh4q8lfulc13aszh&redirect_uri=http://localhost:9000/spotify.html&scope=chat_login";
-  })
+  });
 
   function saveData(username, channel) {
      var account = {

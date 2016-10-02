@@ -13,13 +13,7 @@ module.exports = {
     console.log("Search called");
     console.log("Title:", song);
     console.log("Artist:", artist);
-    spotify.searchTracks(song)
-      .then(function(data) {
-          var spotifyURI = data.body.tracks.items[0].uri;
-          return spotifyURI;
-        }, function(err) {
-          console.log('Something went wrong in search!', err);
-        });
+    return spotify.searchTracks(song);
   },
   getMe: function() {
     spotify.getMe()
@@ -51,6 +45,7 @@ module.exports = {
       });
   },
   addToPlaylist: function(uri) {
+      console.log(user_id, playlist_id, uri);
       spotify.addTracksToPlaylist(user_id, playlist_id, [uri])
         .then(function(data) {
           console.log('Added tracks to playlist!');

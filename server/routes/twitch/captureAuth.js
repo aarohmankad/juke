@@ -43,8 +43,13 @@ module.exports = function(router) {
       var songArtist = songParts[1].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
       console.log("Searching...");
-      var spotifyUri = Spotify.search(songTitle, songArtist);
-      Spotify.addToPlaylist(spotifyUri);
+      Spotify.search(songTitle, songArtist)
+        .then(function(data) {
+            var spotifyURI = data.body.tracks.items[0].uri;
+            Spotify.addToPlaylist(spotifyURI);
+          }, function(err) {
+            console.log('Something went wrong in search!', err);
+          });
     });
     
     res.send({

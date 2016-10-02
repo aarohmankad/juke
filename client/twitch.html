@@ -67,10 +67,19 @@
 </div>
 
 <script>
+  var customChannel = false;
 
   document.getElementById('inputUsername').addEventListener('keyup', function(event) {
+    if (customChannel) {
+      return;
+    }
+
     document.getElementById('inputChannel').value = document.getElementById('inputUsername').value;
-  })
+  });
+
+  document.getElementById('inputChannel').addEventListener('keyup', function(event) {
+    customChannel = true;
+  });
 
   document.getElementById('linkTwitch').addEventListener('click', function() {
     var

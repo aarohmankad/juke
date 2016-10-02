@@ -10,27 +10,38 @@ module.exports = function(router) {
 
     bot.run(params);
 
+    bot.listenFor('!juke', function(err, chatter) {
+      if (err) {
+        console.log(err);
+      }
+
+      console.log("Someone typed !juke");
+      bot.msg("Usage: !juke /queue [song name] - [artist name]\n");
+    });
+
     bot.listenFor('!juke help', function(err, chatter) {
       if (err) {
         console.log(err);
       }
 
       console.log("Someone typed !juke help");
-      bot.msg("Usage: !juke [song name] - [artist name]");
+      bot.msg("Usage: !juke /queue [song name] - [artist name]\n");
     });
 
     bot.listen('!juke /queue', function(err, chatter) {
       if (err) {
         console.log(err);
+
+        bot.msg("[Juke says:] Song requests must be formatted as follows: !juke /queue [song name] - [artist name]");
       }
 
       var message = chatter.msg;
       var songParts = message.substring(13).split(' - ');
-      var songTitle = songParts[0];
-      var songArtist = songParts[1];
+      var songTitle = songParts[0].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+      var songArtist = songParts[1].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
       
       console.log("Someone wants to play " + songTitle + " by " + songArtist);
-      bot.msg("Queueing " + songTitle + " by " + songArtist);
+      bot.msg("[Juke says:] Added " + songTitle + " by " + songArtist + " to the playlist.");
     });
     
     res.send({

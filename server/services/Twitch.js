@@ -6,15 +6,15 @@ module.exports = {
     bot.run(config);
   },
   listenFor: function(trigger, response) {
-    bot.listenFor(trigger, function(err, chatter) {
+    bot.listenFor(trigger, function(err,` chatter) {
       if (err) {
         console.log(err);
       }
 
       bot.msg(response);
     });
-  },
-  listenAndAddSong: function(trigger, errorString, successString) {
+  }
+ , listenAndAddSong: function(trigger, errorString, successString) {
     bot.listen('!juke /add', function(err, chatter) {
       if (err) {
         console.log(err);

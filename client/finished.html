@@ -2,6 +2,11 @@
 <head>
 	<title>Juke - Twitch Plays Spotify</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<style>
+		.option-header {
+			display: inline;
+		}
+	</style>
 </head>
 <body style="background-color: #201C2B;">
 	<div class="container">
@@ -15,6 +20,15 @@
 					
 				</div>
 				<img src="img/jukelogo.png" class="img-responsive" style="margin: 0 auto; padding-bottom: 20px;" height="140px"/>
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-body text-left">
+							<h3><b>Options</b></h3>
+							<h4 class="option-header">Only allow subscribers to add music to your playlist</h4>
+							<input type="checkbox" id="toggleSubscriberOnly" class="pull-right">
+						</div>
+					</div>
+				</div>
 				<div class="col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-body text-left">

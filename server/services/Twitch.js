@@ -1,12 +1,20 @@
 var bot = require('node-twitchbot');
 var Spotify = require('./Spotify');
 
+var subscriberOnly = false;
+
 module.exports = {
   initialize: function(config) {
     bot.run(config);
   },
+  toggleSubscriberOnly: function() {
+    subscriberOnly = !subscriberOnly;
+  },
+  isSubscriberOnly: function() {
+    return subscriberOnly;
+  },
   listenFor: function(trigger, response) {
-    bot.listenFor(trigger, function(err,` chatter) {
+    bot.listenFor(trigger, function(err, chatter) {
       if (err) {
         console.log(err);
       }
@@ -21,6 +29,11 @@ module.exports = {
         bot.msg(errorString);
       }
 
+      if (subscriberOnly && chatter.sub != 1) {
+        bot.msg('Sorry, only subscribers are able to add songs to this streamer\'s playlist');
+        return;
+      }
+      
       var message = chatter.msg;
       var songParts = message.substring(11).split(' - ');
       var songTitle = songParts[0].replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});

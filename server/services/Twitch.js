@@ -19,18 +19,18 @@ module.exports = {
         console.log(err);
       }
 
-      bot.msg(response);
+      bot.whisper(chatter.user, response);
     });
   }
  , listenAndAddSong: function(trigger, errorString, successString) {
     bot.listen('!juke /add', function(err, chatter) {
       if (err) {
         console.log(err);
-        bot.msg(errorString);
+        bot.whisper(chatter.user, errorString);
       }
 
       if (subscriberOnly && chatter.sub != 1) {
-        bot.msg('Sorry, only subscribers are able to add songs to this streamer\'s playlist');
+        bot.whisper(chatter.user, 'Sorry, only subscribers are able to add songs to this streamer\'s playlist');
         return;
       }
       
@@ -43,7 +43,7 @@ module.exports = {
         .then(function(data) {
             var spotifyURI = data.body.tracks.items[0].uri;
             Spotify.addToPlaylist(spotifyURI);
-            bot.msg(successString = '[Juke says:] ' + songTitle + ' by ' + songArtist + ' was added');
+            bot.whisper(chatter.user, successString = '[Juke says:] ' + songTitle + ' by ' + songArtist + ' was added');
           }, function(err) {
             console.log('Something went wrong in search!', err);
           });

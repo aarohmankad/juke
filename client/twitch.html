@@ -1,97 +1,94 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Juke - Twitch Plays Spotify</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <title>Juke - Twitch Plays Spotify</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body style="background-color: #201C2B;">
-	<div class="container">
-		<div class="row">
-
-			<div class="col-xs-12" style="height:50px;"></div>
-		<!--
-			<ul class="breadcrumb col-xs-8 col-xs-offset-2">
-				<li><a href="#">Juke</a></li>
-				<li class="active">Setup Twitch</li>
-			</ul>
-		-->
-
-     <div class="col-xs-12 text-center" style="height:130px; padding-top: 10px">
-        
-
-        <img src="img/jukelogo.png" style="margin: 0 auto;" height="100"/>
-
-    </div>
-
-    <div class="col-xs-8 col-xs-offset-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12" style="height:50px;"></div>
+      <div class="col-xs-12 text-center" style=
+      "height:130px; padding-top: 10px"><img height="100" src=
+      "img/jukelogo.png" style="margin: 0 auto;"></div>
+      <div class="col-xs-8 col-xs-offset-2">
         <div class="panel panel-info">
-           <div class="panel-heading">
-              <h3 class="panel-title text-center">Step 1</h3>
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Step 1</h3>
           </div>
           <div class="panel-body">
-              <div class="row">
-                 <div class="col-xs-8 col-xs-offset-2">
-                    <div class="panel panel-default">
-                       <div class="panel-body text-center">
-
-                          <img src="img/Twitch_BlackLogoURL.png" height="80px" style="padding: 10px;" />
-
-                          <p class="text-center">Sign into the account you want to serve as the chat bot.</p><br>
-
-                          <form class="form-horizontal">
-                              <fieldset>
-                                <div class="form-group">
-                                  <label for="inputUsername" class="col-lg-2 control-label">Username</label>
-                                  <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputUsername" placeholder="Twitch Username" autocomplete="off" style="background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="inputChannel" class="col-lg-2 control-label">Channel</label>
-                              <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputChannel" placeholder="Twitch Channel" autocomplete="off" style="background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                            </div>
+            <div class="row">
+              <div class="col-xs-8 col-xs-offset-2">
+                <div class="panel panel-default">
+                  <div class="panel-body text-center">
+                    <img height="80px" src="img/Twitch_BlackLogoURL.png" style=
+                    "padding: 10px;">
+                    <p class="text-center">Sign into the account you want to
+                    serve as the chat bot.</p><br>
+                    <form id="twitchForm" class="form-horizontal">
+                      <fieldset>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for=
+                          "inputUsername">Username</label>
+                          <div class="col-lg-10">
+                            <input autocomplete="off" class="form-control" id=
+                            "inputUsername" placeholder="Twitch Username"
+                            style="background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;"
+                            type="text">
+                          </div>
                         </div>
-                    </fieldset>
-                </form>
-
-                <a href="#" class="btn btn-info btn-lg btn-block" id="linkTwitch">Link Twitch</a>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for=
+                          "inputChannel">Channel</label>
+                          <div class="col-lg-10">
+                            <input autocomplete="off" class="form-control" id=
+                            "inputChannel" placeholder="Twitch Channel" style=
+                            "background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;"
+                            type="text">
+                          </div>
+                        </div>
+                      </fieldset>
+                    <button type="submit" class="btn btn-infor btn-lg btn-block">
+                        Link Twitch
+                    </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  </div>
+  <script>
+    var customChannel = false;
 
-<script>
-  var customChannel = false;
-
-  document.getElementById('inputUsername').addEventListener('keyup', function(event) {
+    document.getElementById('inputUsername').addEventListener('keyup', function(event) {
     if (customChannel) {
       return;
     }
 
     document.getElementById('inputChannel').value = document.getElementById('inputUsername').value;
-  });
+    });
 
-  document.getElementById('inputChannel').addEventListener('keyup', function(event) {
+    document.getElementById('inputChannel').addEventListener('keyup', function(event) {
     customChannel = true;
-  });
+    });
 
-  document.getElementById('linkTwitch').addEventListener('click', function() {
-    var
-      username = document.getElementById('inputUsername').value.toLowerCase(),
-      channel = document.getElementById('inputChannel').value.toLowerCase();
+    document.getElementById('twitchForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    saveData(username, channel);
+        var
+          username = document.getElementById('inputUsername').value.toLowerCase(),
+          channel = document.getElementById('inputChannel').value.toLowerCase();
 
-    window.location = "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=lu14if1tzfgirz3wh4q8lfulc13aszh&redirect_uri=http://localhost:9000/spotify.html&scope=chat_login";
-  });
+        saveData(username, channel);
 
-  function saveData(username, channel) {
+        window.location = "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=lu14if1tzfgirz3wh4q8lfulc13aszh&redirect_uri=http://localhost:9000/spotify.html&scope=chat_login";
+    });
+
+    function saveData(username, channel) {
      var account = {
        username: username,
        channel: channel
@@ -102,7 +99,7 @@
      account = btoa(account);
      //save the encoded accout to web storage
      localStorage.setItem('_account', account);
-  }
-</script>
+    }
+  </script>
 </body>
 </html>
